@@ -8,7 +8,11 @@ const Index = () => {
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center mb-16">
         <div className="w-40 h-40 mb-6 animate-float">
-          <img src="/logo.svg" alt="We Love Logic Logo" className="w-full h-full" />
+          <img 
+            src="/lovable-uploads/ef01dac6-96ed-4fb1-8226-d23286de2788.png" 
+            alt="We Love Logic Logo" 
+            className="w-full h-full" 
+          />
         </div>
         
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-logic-blue">
