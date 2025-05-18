@@ -42,7 +42,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -60,7 +60,7 @@
 }
 
 .logo-text {
-  font-family: 'Bubblegum Sans', 'Comic Sans MS', cursive;
+  font-family: Arial, Helvetica, sans-serif;
   @apply text-logic-blue font-bold;
 }
 

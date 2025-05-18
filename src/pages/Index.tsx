@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import SectionCard from "@/components/SectionCard";
 
@@ -14,9 +13,6 @@ const Index = () => {
           />
         </div>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-logic-blue">
-          We Love Logic
-        </h1>
         <p className="text-xl md:text-2xl mb-8 max-w-2xl">
           Fun logic puzzles and games for curious minds aged 8-11
         </p>
