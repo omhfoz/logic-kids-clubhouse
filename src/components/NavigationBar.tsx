@@ -13,7 +13,11 @@ const NavigationBar = () => {
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-2">
-          <img src="/logo.svg" alt="We Love Logic Logo" className="h-10 md:h-12" />
+          <img 
+            src="/lovable-uploads/ef01dac6-96ed-4fb1-8226-d23286de2788.png" 
+            alt="We Love Logic Logo" 
+            className="h-10 md:h-12" 
+          />
           <span className="logo-text text-xl md:text-2xl hidden sm:inline-block">We Love Logic</span>
         </NavLink>
 
