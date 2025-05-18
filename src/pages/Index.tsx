@@ -7,11 +7,10 @@ const Index = () => {
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center mb-16">
-        <div className="w-40 h-40 mb-6 animate-float">
+        <div className="mb-6">
           <img 
             src="/lovable-uploads/ef01dac6-96ed-4fb1-8226-d23286de2788.png" 
-            alt="We Love Logic Logo" 
-            className="w-full h-full" 
+            alt="We Love Logic Logo"
           />
         </div>
         
