@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import SectionCard from "@/components/SectionCard";
 
@@ -18,11 +19,8 @@ const Index = () => {
         </p>
         
         <div className="flex flex-wrap gap-4 justify-center">
-          <Button className="bg-logic-green hover:bg-logic-green/90 text-white text-lg px-6 py-6 rounded-xl btn-bounce">
-            Start Exploring
-          </Button>
-          <Button variant="outline" className="border-logic-blue text-logic-blue hover:bg-logic-blue/10 text-lg px-6 py-6 rounded-xl btn-bounce">
-            Learn More
+          <Button className="bg-logic-blue hover:bg-logic-blue/90 text-white text-lg px-6 py-6 rounded-xl btn-bounce font-bold uppercase">
+            JOIN NOW
           </Button>
         </div>
       </section>
