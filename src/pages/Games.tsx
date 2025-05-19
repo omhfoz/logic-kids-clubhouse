@@ -1,8 +1,54 @@
+
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import Terminal from "@/components/Terminal";
+
+// Game categories
+const categories = [
+  {
+    id: 1,
+    title: "Pattern Recognition",
+    description: "Identify patterns, sequences, and relationships between objects.",
+    image: "/games/pattern.png",
+    color: "bg-gradient-to-r from-logic-blue to-blue-400"
+  },
+  {
+    id: 2,
+    title: "Deductive Reasoning",
+    description: "Use clues to eliminate possibilities and arrive at logical conclusions.",
+    image: "/games/deductive.png",
+    color: "bg-gradient-to-r from-purple-500 to-logic-purple"
+  },
+  {
+    id: 3,
+    title: "Spatial Reasoning",
+    description: "Visualize and manipulate objects in your mind to solve puzzles.",
+    image: "/games/spatial.png",
+    color: "bg-gradient-to-r from-logic-green to-green-400"
+  },
+  {
+    id: 4,
+    title: "Mathematical Logic",
+    description: "Apply mathematical principles to solve logical problems.",
+    image: "/games/math.png",
+    color: "bg-gradient-to-r from-logic-orange to-orange-400"
+  },
+  {
+    id: 5,
+    title: "Boolean Logic",
+    description: "Work with true/false statements, AND/OR operations, and conditionals.",
+    image: "/games/boolean.png",
+    color: "bg-gradient-to-r from-pink-500 to-rose-400"
+  },
+  {
+    id: 6,
+    title: "Algorithmic Thinking",
+    description: "Create step-by-step solutions to solve complex problems.",
+    image: "/games/algorithm.png",
+    color: "bg-gradient-to-r from-cyan-500 to-teal-400"
+  }
+];
 
 // Game data
 const puzzles = [
@@ -13,7 +59,7 @@ const puzzles = [
     image: "/puzzles/pattern1.png",
     difficulty: "easy",
     ageGroup: "8-9",
-    type: "puzzle"
+    category: "Pattern Recognition"
   },
   {
     id: 2,
@@ -22,7 +68,7 @@ const puzzles = [
     image: "/puzzles/oddone1.png",
     difficulty: "easy",
     ageGroup: "8-9",
-    type: "puzzle"
+    category: "Pattern Recognition"
   },
   {
     id: 3,
@@ -31,7 +77,7 @@ const puzzles = [
     image: "/puzzles/grid1.png",
     difficulty: "medium",
     ageGroup: "9-10",
-    type: "puzzle"
+    category: "Spatial Reasoning"
   },
   {
     id: 4,
@@ -40,7 +86,7 @@ const puzzles = [
     image: "/puzzles/rotation1.png",
     difficulty: "medium",
     ageGroup: "9-10",
-    type: "puzzle"
+    category: "Spatial Reasoning"
   },
   {
     id: 5,
@@ -49,7 +95,7 @@ const puzzles = [
     image: "/puzzles/series1.png",
     difficulty: "hard",
     ageGroup: "10-11",
-    type: "puzzle"
+    category: "Pattern Recognition"
   },
   {
     id: 6,
@@ -58,7 +104,7 @@ const puzzles = [
     image: "/puzzles/transform1.png",
     difficulty: "hard",
     ageGroup: "10-11",
-    type: "puzzle"
+    category: "Spatial Reasoning"
   },
   {
     id: 7,
@@ -67,16 +113,16 @@ const puzzles = [
     image: "/games/detective.png",
     difficulty: "medium",
     ageGroup: "10-11",
-    type: "game"
+    category: "Deductive Reasoning"
   },
   {
     id: 8,
     title: "Logic Maze",
-    description: "Navigate through a text-based maze using logical commands.",
+    description: "Navigate through a visual maze using logical rules.",
     image: "/games/maze.png",
     difficulty: "easy",
     ageGroup: "10-11",
-    type: "game"
+    category: "Algorithmic Thinking"
   },
   {
     id: 9,
@@ -85,7 +131,7 @@ const puzzles = [
     image: "/games/codebreaker.png",
     difficulty: "medium",
     ageGroup: "10-11",
-    type: "game"
+    category: "Boolean Logic"
   },
   {
     id: 10,
@@ -94,7 +140,7 @@ const puzzles = [
     image: "/games/puzzler.png",
     difficulty: "hard",
     ageGroup: "11",
-    type: "game"
+    category: "Mathematical Logic"
   }
 ];
 
@@ -102,40 +148,44 @@ const Games = () => {
   const [filter, setFilter] = useState({
     difficulty: "all",
     ageGroup: "all",
-    type: "all"
+    category: "all"
   });
 
   const filteredGames = puzzles.filter(game => {
     return (filter.difficulty === "all" || game.difficulty === filter.difficulty) && 
            (filter.ageGroup === "all" || game.ageGroup === filter.ageGroup) &&
-           (filter.type === "all" || game.type === filter.type);
+           (filter.category === "all" || game.category === filter.category);
   });
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-4 text-logic-blue">Logic Games</h1>
       <p className="text-xl text-center mb-8 max-w-3xl mx-auto">
-        Explore our collection of puzzles and games to challenge your logical thinking skills.
+        Explore our collection of interactive games designed to develop logical thinking skills through fun challenges.
       </p>
 
-      {/* Terminal Interface */}
-      <div className="bg-gradient-to-r from-logic-blue to-logic-purple rounded-3xl p-8 mb-12">
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-4 text-white">Interactive Logic Terminal</h2>
-            <p className="text-lg mb-6 text-white">
-              Try our text-based logic games right in your browser! Type commands to solve mysteries, 
-              navigate mazes, and test your logical thinking skills. Start with the 'help' command to see what's available.
-            </p>
-            <div className="flex gap-4">
-              <Badge className="bg-white text-logic-blue text-sm">Text-based</Badge>
-              <Badge className="bg-black text-green-400 text-sm">CLI Style</Badge>
+      {/* Logic Categories */}
+      <h2 className="text-2xl font-bold mb-6">Logic Categories</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {categories.map(category => (
+          <div 
+            key={category.id}
+            className={`${category.color} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 cursor-pointer`}
+            onClick={() => setFilter({...filter, category: category.title})}
+          >
+            <div className="flex flex-col items-center text-white">
+              <div className="bg-white/20 rounded-full p-4 mb-4">
+                <img 
+                  src={category.image} 
+                  alt={category.title}
+                  className="w-16 h-16 object-contain" 
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-2">{category.title}</h3>
+              <p className="text-center text-white/90">{category.description}</p>
             </div>
           </div>
-          <div className="md:w-1/2 flex justify-center">
-            <Terminal />
-          </div>
-        </div>
+        ))}
       </div>
 
       {/* Filters */}
@@ -143,26 +193,23 @@ const Games = () => {
         <h2 className="text-xl font-bold mb-4">Find Games</h2>
         <div className="flex flex-wrap gap-4">
           <div className="w-full md:w-auto">
-            <label className="block mb-2 font-medium">Type:</label>
+            <label className="block mb-2 font-medium">Category:</label>
             <div className="flex flex-wrap gap-2">
               <FilterButton 
-                active={filter.type === "all"}
-                onClick={() => setFilter({...filter, type: "all"})}
+                active={filter.category === "all"}
+                onClick={() => setFilter({...filter, category: "all"})}
               >
-                All Types
+                All Categories
               </FilterButton>
-              <FilterButton 
-                active={filter.type === "puzzle"}
-                onClick={() => setFilter({...filter, type: "puzzle"})}
-              >
-                Visual Puzzles
-              </FilterButton>
-              <FilterButton 
-                active={filter.type === "game"}
-                onClick={() => setFilter({...filter, type: "game"})}
-              >
-                Text Games
-              </FilterButton>
+              {categories.map(cat => (
+                <FilterButton 
+                  key={cat.id}
+                  active={filter.category === cat.title}
+                  onClick={() => setFilter({...filter, category: cat.title})}
+                >
+                  {cat.title}
+                </FilterButton>
+              ))}
             </div>
           </div>
           
@@ -240,7 +287,7 @@ const Games = () => {
           <h3 className="text-2xl font-bold mb-2">No games found</h3>
           <p className="mb-4">Try changing your filter settings to see more games.</p>
           <Button 
-            onClick={() => setFilter({ difficulty: "all", ageGroup: "all", type: "all" })}
+            onClick={() => setFilter({ difficulty: "all", ageGroup: "all", category: "all" })}
             className="bg-logic-blue hover:bg-logic-blue/90"
           >
             Reset Filters
@@ -307,7 +354,7 @@ const GameCard = ({ game }: { game: typeof puzzles[0] }) => {
   }[game.difficulty];
 
   return (
-    <Card className="overflow-hidden hover:shadow-xl transition-shadow">
+    <Card className="overflow-hidden hover:shadow-xl transition-shadow animate-fade-in">
       <img 
         src={game.image || "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"} 
         alt={game.title} 
@@ -324,9 +371,9 @@ const GameCard = ({ game }: { game: typeof puzzles[0] }) => {
         <div className="flex justify-between items-center">
           <div className="flex gap-2">
             <span className="text-sm text-gray-500">Ages {game.ageGroup}</span>
-            <Badge variant="outline" className="text-xs">{game.type === "puzzle" ? "Visual" : "Text"}</Badge>
+            <Badge variant="outline" className="text-xs">{game.category}</Badge>
           </div>
-          <Button className="bg-logic-blue hover:bg-logic-blue/90">Try Now</Button>
+          <Button className="bg-logic-blue hover:bg-logic-blue/90">Play Now</Button>
         </div>
       </div>
     </Card>
