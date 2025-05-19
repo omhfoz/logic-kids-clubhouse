@@ -34,7 +34,7 @@ const NavigationBar = () => {
         <nav className="hidden md:flex items-center gap-6">
           <NavItem to="/games">Logic Games</NavItem>
           <NavItem to="/worksheets">Worksheets</NavItem>
-          <NavItem to="/pricing">Pricing</NavItem>
+          <NavItem to="/stories">Logic Stories</NavItem>
         </nav>
       </div>
       
@@ -44,7 +44,7 @@ const NavigationBar = () => {
           <ul className="flex flex-col gap-4">
             <MobileNavItem to="/games" onClick={toggleMenu}>Logic Games</MobileNavItem>
             <MobileNavItem to="/worksheets" onClick={toggleMenu}>Worksheets</MobileNavItem>
-            <MobileNavItem to="/pricing" onClick={toggleMenu}>Pricing</MobileNavItem>
+            <MobileNavItem to="/stories" onClick={toggleMenu}>Logic Stories</MobileNavItem>
           </ul>
         </nav>
       )}

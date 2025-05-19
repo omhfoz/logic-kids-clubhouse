@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Terminal from "@/components/Terminal";
 
-// Combining puzzles and games into one page
+// Game data
 const puzzles = [
   {
     id: 1,
@@ -118,25 +118,22 @@ const Games = () => {
         Explore our collection of puzzles and games to challenge your logical thinking skills.
       </p>
 
-      {/* Featured Game */}
-      <div className="bg-gradient-to-r from-logic-blue to-logic-purple text-white rounded-3xl p-8 mb-12">
+      {/* Terminal Interface */}
+      <div className="bg-gradient-to-r from-logic-blue to-logic-purple rounded-3xl p-8 mb-12">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-4">Featured Game: Logic Master Challenge</h2>
-            <p className="text-lg mb-6">
-              Test your logic skills with our most popular game! Solve a series of increasingly difficult logical puzzles 
-              with visual and text-based clues. Can you become a Logic Master?
+            <h2 className="text-3xl font-bold mb-4 text-white">Interactive Logic Terminal</h2>
+            <p className="text-lg mb-6 text-white">
+              Try our text-based logic games right in your browser! Type commands to solve mysteries, 
+              navigate mazes, and test your logical thinking skills. Start with the 'help' command to see what's available.
             </p>
-            <Button variant="secondary" size="lg" className="bg-white text-logic-blue hover:bg-blue-50">
-              Play Now
-            </Button>
+            <div className="flex gap-4">
+              <Badge className="bg-white text-logic-blue text-sm">Text-based</Badge>
+              <Badge className="bg-black text-green-400 text-sm">CLI Style</Badge>
+            </div>
           </div>
           <div className="md:w-1/2 flex justify-center">
-            <img 
-              src="/games/featured.png" 
-              alt="Logic Master Challenge" 
-              className="rounded-xl shadow-lg max-h-80 object-cover"
-            />
+            <Terminal />
           </div>
         </div>
       </div>
