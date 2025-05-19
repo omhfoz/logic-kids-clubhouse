@@ -32,10 +32,9 @@ const NavigationBar = () => {
 
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          <NavItem to="/puzzles">Puzzles</NavItem>
           <NavItem to="/games">Logic Games</NavItem>
           <NavItem to="/worksheets">Worksheets</NavItem>
-          <NavItem to="/resources">Resources</NavItem>
+          <NavItem to="/pricing">Pricing</NavItem>
         </nav>
       </div>
       
@@ -43,10 +42,9 @@ const NavigationBar = () => {
       {isMenuOpen && (
         <nav className="md:hidden bg-white py-4 px-6 shadow-inner">
           <ul className="flex flex-col gap-4">
-            <MobileNavItem to="/puzzles" onClick={toggleMenu}>Puzzles</MobileNavItem>
             <MobileNavItem to="/games" onClick={toggleMenu}>Logic Games</MobileNavItem>
             <MobileNavItem to="/worksheets" onClick={toggleMenu}>Worksheets</MobileNavItem>
-            <MobileNavItem to="/resources" onClick={toggleMenu}>Resources</MobileNavItem>
+            <MobileNavItem to="/pricing" onClick={toggleMenu}>Pricing</MobileNavItem>
           </ul>
         </nav>
       )}

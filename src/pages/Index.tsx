@@ -27,19 +27,12 @@ const Index = () => {
       
       {/* Featured Sections */}
       <h2 className="text-3xl font-bold text-center mb-8 text-logic-blue">Explore Our Activities</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <SectionCard 
-          title="Puzzles" 
-          description="Fun visual brain teasers to challenge your mind"
-          icon="/icons/puzzle.svg"
-          bgColor="bg-logic-blue"
-          to="/puzzles"
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
         <SectionCard 
           title="Logic Games" 
-          description="Text-based logic games for older kids"
+          description="Fun visual puzzles and brain teasers to challenge your mind"
           icon="/icons/gamepad.svg"
-          bgColor="bg-logic-green"
+          bgColor="bg-logic-blue"
           to="/games"
         />
         <SectionCard 
@@ -48,13 +41,6 @@ const Index = () => {
           icon="/icons/download.svg"
           bgColor="bg-logic-yellow"
           to="/worksheets"
-        />
-        <SectionCard 
-          title="Resources" 
-          description="Videos, books and learning materials"
-          icon="/icons/book.svg"
-          bgColor="bg-logic-orange"
-          to="/resources"
         />
       </div>
       
