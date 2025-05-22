@@ -36,6 +36,11 @@ const Footer = () => {
                   Worksheets
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/nonverbal" className="hover:underline text-blue-100 hover:text-white">
+                  Non-Verbal Reasoning
+                </NavLink>
+              </li>
             </ul>
           </div>
           
@@ -56,6 +61,7 @@ const Footer = () => {
               <li>Sequences</li>
               <li>Deduction</li>
               <li>Inference</li>
+              <li>Non-Verbal Reasoning</li>
             </ul>
           </div>
         </div>
