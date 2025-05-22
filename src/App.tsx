@@ -11,6 +11,7 @@ import Puzzles from "./pages/Puzzles";
 import Worksheets from "./pages/Worksheets";
 import LogicStories from "./pages/LogicStories";
 import NonVerbalReasoning from "./pages/NonVerbalReasoning";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/worksheets" element={<Layout><Worksheets /></Layout>} />
           <Route path="/stories" element={<Layout><LogicStories /></Layout>} />
           <Route path="/nonverbal" element={<Layout><NonVerbalReasoning /></Layout>} />
+          <Route path="/admin" element={<Layout><AdminDashboard /></Layout>} />
           <Route path="/games" element={<Layout><Puzzles /></Layout>} />
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>

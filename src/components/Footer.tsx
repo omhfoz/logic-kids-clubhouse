@@ -41,6 +41,11 @@ const Footer = () => {
                   Non-Verbal Reasoning
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/admin" className="hover:underline text-blue-100 hover:text-white">
+                  Admin Dashboard
+                </NavLink>
+              </li>
             </ul>
           </div>
           

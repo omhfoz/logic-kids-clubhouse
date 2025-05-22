@@ -6,11 +6,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ArrowDown, Check, Info, Upload } from "lucide-react";
+import { ArrowDown, Check, Info } from "lucide-react";
 import { toast } from "sonner";
 
 const NonVerbalReasoning = () => {
-  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -33,21 +32,6 @@ const NonVerbalReasoning = () => {
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(sampleQuestions[0]);
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    
-    const reader = new FileReader();
-    reader.onload = () => {
-      setUploadedImage(reader.result as string);
-      setSelectedAnswer(null);
-      setIsCorrect(null);
-      setShowExplanation(false);
-    };
-    reader.readAsDataURL(file);
-    toast.success("Question image uploaded successfully!");
-  };
 
   const handleAnswerSelect = (value: string) => {
     setSelectedAnswer(value);
@@ -75,7 +59,7 @@ const NonVerbalReasoning = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-4 text-logic-blue">Non-Verbal Reasoning</h1>
       <p className="text-xl text-center mb-8 max-w-3xl mx-auto">
-        Practice non-verbal reasoning problems by uploading question images or using our sample questions.
+        Practice non-verbal reasoning problems with our interactive questions.
       </p>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
@@ -83,25 +67,7 @@ const NonVerbalReasoning = () => {
           <h2 className="text-2xl font-bold mb-4">Question Controls</h2>
           
           <div className="space-y-6">
-            {/* Upload Section */}
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Upload a Question</h3>
-              <div className="flex items-center gap-4">
-                <Button variant="outline" className="w-full" onClick={() => document.getElementById("question-upload")?.click()}>
-                  <Upload className="mr-2 h-4 w-4" />
-                  Upload Image
-                </Button>
-                <input 
-                  id="question-upload"
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleImageUpload}
-                />
-              </div>
-            </div>
-            
-            {/* Sample Questions */}
+            {/* Sample Questions Navigation */}
             <div>
               <h3 className="text-lg font-semibold mb-2">Sample Questions</h3>
               <div className="space-y-2">
@@ -112,7 +78,6 @@ const NonVerbalReasoning = () => {
                     className="w-full justify-start"
                     onClick={() => {
                       setCurrentQuestion(q);
-                      setUploadedImage(null);
                       setSelectedAnswer(null);
                       setIsCorrect(null);
                       setShowExplanation(false);
@@ -130,19 +95,11 @@ const NonVerbalReasoning = () => {
           <h2 className="text-2xl font-bold mb-4">Question Display</h2>
           
           <div className="bg-gray-100 p-4 rounded-lg mb-6 min-h-[200px] flex items-center justify-center">
-            {uploadedImage ? (
-              <img 
-                src={uploadedImage} 
-                alt="Uploaded question" 
-                className="max-w-full max-h-[400px] object-contain"
-              />
-            ) : (
-              <img 
-                src={currentQuestion.image} 
-                alt={`Question ${currentQuestion.id}`} 
-                className="max-w-full max-h-[400px] object-contain"
-              />
-            )}
+            <img 
+              src={currentQuestion.image} 
+              alt={`Question ${currentQuestion.id}`} 
+              className="max-w-full max-h-[400px] object-contain"
+            />
           </div>
           
           <h3 className="text-lg font-semibold mb-2">Select Your Answer:</h3>
